@@ -1,0 +1,20 @@
+[
+    {
+        "text": "coucou",
+        "answer": false,
+        "why": "bcause"
+
+    },
+    {
+        "text": "coucou2",
+        "answer": true,
+        "why": "bcause2"
+
+    },
+    {
+        "text": "coucou3",
+        "answer": false,
+        "why": "bcause3"
+
+    }
+]

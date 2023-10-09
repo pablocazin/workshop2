@@ -3,8 +3,14 @@ body, html {
     height: 100vh;
 }
 
-div#test {
-    width: 200px;
-    height: 200px;
+div#running-container {
+    background-color: yellow;
+}
+
+div#left {
+    background-color: red;
+}
+
+div#right {
     background-color: red;
 }
