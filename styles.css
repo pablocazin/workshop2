@@ -1,16 +1,45 @@
 body, html {
     width: 100vw;
     height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
-div#running-container {
+div#start-container {
+    width: 100%;
+    height: 100%;
     background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-div#left {
-    background-color: red;
+div#game-container {
+    width: 100%;
+    height: 100%;
+    background-color: green;
+    display: none;
 }
 
-div#right {
-    background-color: red;
+button#start-button {
+    font-size: 42px;
+}
+
+#left-game-container, #right-game-container {
+    display: flex;
+    width: 50%;
+    height: 100%;
+}
+
+#left-game-container {
+    background-color: pink;
+}
+
+#right-game-container {
+    background-color: grey;
+}
+
+#question-placeholder {
+    position: absolute;
+    margin: 0 auto;
 }

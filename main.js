@@ -22,33 +22,43 @@ class Game {
    */
   start() {
     console.log("start");
-    this.getButtons();
+    this.getButtonsAndContainers();
+    this.hiddeStartContainer();
+    this.showGameContainer();
     this.listenToAnswerButtonsEvents();
     this.getTextPlaceholders();
   }
 
+  hiddeStartContainer() {
+    this.startContainer.style.display = "none";
+  }
+
+  showGameContainer() {
+    this.gameContainer.style.display = "flex";
+  }
 
   /**
    * Get the buttons we click on to answer
    */
-  getButtons() {
+  getButtonsAndContainers() {
     console.log("getButtons");
-    this.buttonOneYes = this.getDivById("button-one-yes");
-    this.buttonOneNo = this.getDivById("button-one-no");
-    this.buttonTwoYes = this.getDivById("button-two-yes");
-    this.buttonTwoNo = this.getDivById("button-two-no");
+    this.buttonOneYes = this.getElementById("button-one-yes");
+    this.buttonOneNo = this.getElementById("button-one-no");
+    this.buttonTwoYes = this.getElementById("button-two-yes");
+    this.buttonTwoNo = this.getElementById("button-two-no");
+    this.startContainer = this.getElementById("start-container");
+    this.gameContainer = this.getElementById("game-container");
   }
-
 
   /**
    * get the location of question text so we can change it
    */
   getTextPlaceholders() {
     console.log("getTextPlaceholders");
-    this.textPlaceHolderOne = this.getDivById("text-placeholder-one");
-    this.textPlaceHolderTwo = this.getDivById("text-placeholder-two");
+    this.textPlaceholder = this.getElementById("question-placeholder")
+    //this.textPlaceHolderOne = this.getElementById("text-placeholder-one");
+    //this.textPlaceHolderTwo = this.getElementById("text-placeholder-two");
   }
-
 
   /**
    * Add listeners to answers buttons
@@ -72,16 +82,14 @@ class Game {
     );
   }
 
-
   /**
    * Get a div by text id
    * @param {string} id
    * @returns HTMLElement
    */
-  getDivById(id) {
+  getElementById(id) {
     return document.getElementById(id);
   }
-
 
   /**
    * Go to the next question or end the quizz
@@ -96,67 +104,64 @@ class Game {
     }
   }
 
-
   /**
    *
    * @param {Question} question
    */
   assignQuestionToPlaceholders(question) {
-    this.textPlaceHolderOne.innerText = question.text;
-    this.textPlaceHolderOne.innerText = question.text;
+    this.textPlaceholder.innerText = question.text;
+    //this.textPlaceHolderOne.innerText = question.text;
+    //this.textPlaceHolderOne.innerText = question.text;
   }
-
 
   /**
    *
    * @param {"buttonOneYes" | "buttonOneNo" | "buttonTwoYes" | "buttonTwoNo"} button
    */
   handleAnswer(button) {
-
     console.log(`clicked on button ${button}`);
 
     // If the answer is yes
     if (this.actualQuestion.answer) {
       switch (button) {
         case "buttonOneYes":
-            this.playerOneCount++
+          this.playerOneCount++;
           break;
         case "buttonOneNo":
-            this.playerOneCount--
+          this.playerOneCount--;
           break;
         case "buttonTwoYes":
-            this.playerTwoCount++
+          this.playerTwoCount++;
           break;
         case "buttonTwoNo":
-            this.playerTwoCount--
+          this.playerTwoCount--;
           break;
         default:
-            throw "No case match the button clicked"
+          throw "No case match the button clicked";
       }
-    } 
+    }
     // If the answer is no
     else {
-        switch (button) {
-            case "buttonOneYes":
-                this.playerOneCount--
-              break;
-            case "buttonOneNo":
-                this.playerOneCount++
-              break;
-            case "buttonTwoYes":
-                this.playerTwoCount--
-              break;
-            case "buttonTwoNo":
-                this.playerTwoCount++
-              break;
-            default:
-                throw "No case match the button clicked"
-          }
+      switch (button) {
+        case "buttonOneYes":
+          this.playerOneCount--;
+          break;
+        case "buttonOneNo":
+          this.playerOneCount++;
+          break;
+        case "buttonTwoYes":
+          this.playerTwoCount--;
+          break;
+        case "buttonTwoNo":
+          this.playerTwoCount++;
+          break;
+        default:
+          throw "No case match the button clicked";
+      }
     }
 
     this.nextQuestion();
   }
-
 
   /**
    * end the game when there is no more questions
@@ -165,7 +170,6 @@ class Game {
   end() {
     console.log("end");
   }
-  
 }
 
 let gameIsRunning = false;
