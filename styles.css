@@ -1,0 +1,10 @@
+body, html {
+    width: 100vw;
+    height: 100vh;
+}
+
+div#test {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
