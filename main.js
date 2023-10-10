@@ -1,19 +1,108 @@
 const data = [
-  {
-    text: "petite test de question pour le quizz 12121",
-    answer: false,
-    why: "bcause",
-  },
-  {
-    text: "coucou2",
-    answer: true,
-    why: "bcause2",
-  },
-  {
-    text: "coucou3",
-    answer: false,
-    why: "bcause3",
-  },
+  [
+    {
+      text: "Louis a tapé sur les fesses de Lucie, est-ce un acte de drague ?",
+      answer: false,
+      why: "La réponse est NON car tapé sur les fesses de sa collègue sans son consentement c’est une agression sexuelle",
+    },
+    {
+      text: "Théo complimente Sofia sur sa nouvelle coupe de cheveux, est-ce un acte de harcèlement sexuel ?",
+      answer: false,
+      why: "La réponse est NON car complimenter de manière occasionnelle est un acte amical",
+    },
+    {
+      text: "Michel, supérieur hiérarchique de Julie, lui a envoyé des sms en lui indiquant notamment 'je te souhaite une bonne journée avec plein de baisers sur tes lèvres' est ce un acte de drague ?",
+      answer: false,
+      why: "La réponse est NON car envoyer des messages non sollicités à une personne est un acte de harcèlement sexuelle",
+    },
+    {
+      text: "Marc, supérieur hiérarchique de Jeanne, lui partage des images de femmes nues tous les matins, est-ce un acte de harcèlement sexuelle ?",
+      answer: true,
+      why: "La réponse est OUI car envoyer des messages non sollicités à une personne est un acte de harcèlement sexuelle",
+    },
+    {
+      text: "Pierre, lorsqu’il est seul chez lui, invite toujours Thomas, son collègue de bureau, à boire un verre, est-ce un acte de harcèlement sexuel ?",
+      answer: true,
+      why: "to be defined",
+    },
+    {
+      text: "Éléonore a mis son pied au niveau de l’entre-jambes de Charles pendant toute la réunion, est-ce un acte d’agression sexuelle ?",
+      answer: true,
+      why: "La réponse est OUI car avoir un comportement physique déplacé est un acte d’agression sexuelle",
+    },
+    {
+      text: "Emma profite du séminaire d’entreprise pour se faufiler dans la chambre de son collègue Lucas et dormir avec lui, est-ce un acte de drague ?",
+      answer: false,
+      why: "to be defined",
+    },
+    {
+      text: "Alexandre s’amuse à faire raisonner la chanson 'You can leave your hat on' de Joe Cocker dans son bureau, chaque fois que Sarah porte une nouvelle jupe, est-ce un acte de drague ?",
+      answer: false,
+      why: "La réponse est NON car faire des commentaires inappropriés au quotidien est un acte de harcèlement sexuel",
+    },
+    {
+      text: "Noah continue de faire des compliments au quotidien à Chloé alors qu’elle lui a dit d’arrêter, est-ce un acte harcèlement sexuel ?",
+      answer: true,
+      why: "La réponse est car OUI faire des commentaires inappropriés au quotidien est un acte de harcèlement sexuel",
+    },
+    {
+      text: "Agathe, l’employeur de Juliette, a tenté d'obtenir des faveurs de nature sexuelle en multipliant les cadeaux et les appels, est-ce un acte harcèlement sexuel ?",
+      answer: true,
+      why: "to be defined",
+    },
+  ],
+  [
+    {
+      text: "Patrick, employeur de Manon, fait irruption dans sa vie privée, dans le but de la convaincre de céder à ses avances, est-ce un acte de d’harcèlement sexuel ?",
+      answer: true,
+      why: "to be defined",
+    },
+    {
+      text: "Camille fait la bise à Romane pour me dire bonjour, est-ce un cas de harcèlement sexuelle ?",
+      answer: false,
+      why: "La réponse est non car faire la bise est un acte amical",
+    },
+    {
+      text: "Charlotte menace de licencier Noémie si elle refuse ses avances sexuelles, est-ce un cas de harcèlement sexuelle ?",
+      answer: true,
+      why: "La réponse est OUI car impacter la santé mentale d’une personne peut engendrer un isolement professionnelle donc c’est un acte de harcèlement sexuelle",
+    },
+    {
+      text: "Mélanie fait passé un entretien d’embauche à Zoé dans le bar d’un hôtel, puis un deuxième dans la chambre, est-ce un acte de harcèlement sexuel ?",
+      answer: true,
+      why: "to be defined",
+    },
+    {
+      text: "Maxime siffle Émilie car elle est venue travailler avec une robe décolleté est-ce un acte de harcèlement sexuelle?",
+      answer: true,
+      why: "La réponse est car OUI faire des commentaires inappropriés au quotidien est un acte de harcèlement sexuel",
+    },
+    {
+      text: "Hugo, collègue de bureau de Léa, lui pose des questions privées du type 'Quel est la taille de tes seins? ', est-ce un acte de drague ?",
+      answer: false,
+      why: "La réponse est NON car faire des commentaires inappropriés au quotidien est un acte de harcèlement sexuel",
+    },
+    {
+      text: "Inès lors d’un déplacement professionnel en voiture a mis sa main sur la cuisse de Jade a plusieur reprise est ce un acte de harcèlement sexuelle?",
+      answer: false,
+      why: "to be defined",
+    },
+    {
+      text: "Fernand enferme avec lui Margot dans une pièce après des avances sexuelles, est-ce un acte de drague ?",
+      answer: false,
+      why: "La réponse est NON car avoir un comportement physique déplacé est un acte d’agression sexuelle",
+    },
+    {
+      text: "Étienne impose à Gabriel, son employé, de partager une chambre lors d’un déplacement, est-ce un acte de drague ?",
+      answer: false,
+      why: "to be defined",
+    },
+    {
+      text: "to be defined",
+      answer: true,
+      why: "to be defined",
+    },
+  ],
 ];
 
 class Game {
@@ -30,6 +119,7 @@ class Game {
   constructor(questions) {
     this.questions = questions;
     this.start();
+    this.historical = [];
   }
 
   /**
@@ -47,14 +137,23 @@ class Game {
     this.nextQuestion();
   }
 
+  /**
+   * hidde the container of lobby
+   */
   hiddeStartContainer() {
     this.startContainer.style.display = "none";
   }
 
+  /**
+   * show container of game
+   */
   showGameContainer() {
     this.gameContainer.style.display = "flex";
   }
 
+  /**
+   * hidde container of game
+   */
   hiddeGameContainer() {
     this.gameContainer.style.display = "none";
   }
@@ -74,7 +173,7 @@ class Game {
     this.buttonTwoNo = this.getElementById("button-two-no");
     this.startContainer = this.getElementById("start-container");
     this.gameContainer = this.getElementById("game-container");
-    this.endContainer = this.getElementById("end-container")
+    this.endContainer = this.getElementById("end-container");
   }
 
   /**
@@ -185,6 +284,15 @@ class Game {
       }
     }
 
+    
+    // historical of answers
+    this.historical.push({
+        player: button.substring(0, -3),
+        question: this.questions[this.step],
+        playerAnswer: button.includes("Yes"),
+        answer: this.actualQuestion.answer
+    })
+    
     this.nextQuestion();
   }
 
@@ -196,17 +304,29 @@ class Game {
     console.log("end");
     this.hiddeGameContainer();
     this.showScoreboard();
-    console.log(`player1: ${this.playerOneCount} | player2: ${this.playerTwoCount}`)
+    gameIsRunning = false;
+    console.log(
+      `player1: ${this.playerOneCount} | player2: ${this.playerTwoCount}`
+    );
   }
 }
 
 let gameIsRunning = false;
 
-let startButton = document.getElementById("start-button");
+let startButton1 = document.getElementById("start-button-1");
+let startButton2 = document.getElementById("start-button-2");
 
-startButton.addEventListener("click", () => {
+
+startButton1.addEventListener("click", () => {
   if (!gameIsRunning) {
-    const game = new Game(data);
+    const game = new Game(data[0]);
     gameIsRunning = true;
   }
 });
+
+startButton2.addEventListener("click", () => {
+    if (!gameIsRunning) {
+      const game = new Game(data[1]);
+      gameIsRunning = true;
+    }
+  });
