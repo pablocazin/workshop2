@@ -19,6 +19,7 @@ div#game-container {
     height: 100%;
     background-color: green;
     display: none;
+    flex-direction: column;
 }
 
 button#start-button {
@@ -29,6 +30,7 @@ button#start-button {
     display: flex;
     width: 50%;
     height: 100%;
+    gap: 50px;
 }
 
 #left-game-container {
@@ -42,4 +44,40 @@ button#start-button {
 #question-placeholder {
     position: absolute;
     margin: 0 auto;
+}
+
+#question-placeholder-wrapper {
+    width: 100%;
+    background-color: blue;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#click-zone-container {
+    display: flex;
+}
+
+#click-zone-container div {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.answer-button {
+    outline: none;
+    border: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.yes-button {
+    background-color: green;
+}
+
+.no-button {
+    background-color: red;
 }
