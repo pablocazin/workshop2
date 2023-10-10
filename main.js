@@ -1,3 +1,21 @@
+const data = [
+  {
+    text: "petite test de question pour le quizz 12121",
+    answer: false,
+    why: "bcause",
+  },
+  {
+    text: "coucou2",
+    answer: true,
+    why: "bcause2",
+  },
+  {
+    text: "coucou3",
+    answer: false,
+    why: "bcause3",
+  },
+];
+
 class Game {
   // on part de 10 pour pouvoir décrementer le compteur
   // si la personne se dépeche pour sélectionner une mauvaise réponse
@@ -7,7 +25,6 @@ class Game {
   step = 0;
 
   /**
-   *
    * @param {Questions{text: string, answer: boolean, why: string }[]} question
    */
   constructor(questions) {
@@ -27,6 +44,7 @@ class Game {
     this.showGameContainer();
     this.listenToAnswerButtonsEvents();
     this.getTextPlaceholders();
+    this.nextQuestion();
   }
 
   hiddeStartContainer() {
@@ -35,6 +53,14 @@ class Game {
 
   showGameContainer() {
     this.gameContainer.style.display = "flex";
+  }
+
+  hiddeGameContainer() {
+    this.gameContainer.style.display = "none";
+  }
+
+  showScoreboard() {
+    this.endContainer.style.display = "flex";
   }
 
   /**
@@ -48,6 +74,7 @@ class Game {
     this.buttonTwoNo = this.getElementById("button-two-no");
     this.startContainer = this.getElementById("start-container");
     this.gameContainer = this.getElementById("game-container");
+    this.endContainer = this.getElementById("end-container")
   }
 
   /**
@@ -55,7 +82,7 @@ class Game {
    */
   getTextPlaceholders() {
     console.log("getTextPlaceholders");
-    this.textPlaceholder = this.getElementById("question-placeholder")
+    this.textPlaceholder = this.getElementById("question-placeholder");
     //this.textPlaceHolderOne = this.getElementById("text-placeholder-one");
     //this.textPlaceHolderTwo = this.getElementById("text-placeholder-two");
   }
@@ -64,22 +91,18 @@ class Game {
    * Add listeners to answers buttons
    */
   listenToAnswerButtonsEvents() {
-    this.buttonOneYes.addEventListener(
-      "click",
-      this.handleAnswer("buttonOneYes")
-    );
-    this.buttonOneNo.addEventListener(
-      "click",
-      this.handleAnswer("buttonOneNo")
-    );
-    this.buttonTwoYes.addEventListener(
-      "click",
-      this.handleAnswer("buttonTwoYes")
-    );
-    this.buttonTwoNo.addEventListener(
-      "click",
-      this.handleAnswer("buttonTwoNo")
-    );
+    this.buttonOneYes.addEventListener("click", () => {
+      this.handleAnswer("buttonOneYes");
+    });
+    this.buttonOneNo.addEventListener("click", () => {
+      this.handleAnswer("buttonOneNo");
+    });
+    this.buttonTwoYes.addEventListener("click", () => {
+      this.handleAnswer("buttonTwoYes");
+    });
+    this.buttonTwoNo.addEventListener("click", () => {
+      this.handleAnswer("buttonTwoNo");
+    });
   }
 
   /**
@@ -95,7 +118,8 @@ class Game {
    * Go to the next question or end the quizz
    */
   nextQuestion() {
-    if (question[this.step]) {
+    console.log("Next Question");
+    if (this.questions[this.step]) {
       this.actualQuestion = this.questions[this.step];
       this.assignQuestionToPlaceholders(this.questions[this.step]);
       this.step++;
@@ -109,6 +133,7 @@ class Game {
    * @param {Question} question
    */
   assignQuestionToPlaceholders(question) {
+    console.log("Assigning Question");
     this.textPlaceholder.innerText = question.text;
     //this.textPlaceHolderOne.innerText = question.text;
     //this.textPlaceHolderOne.innerText = question.text;
@@ -169,6 +194,9 @@ class Game {
    */
   end() {
     console.log("end");
+    this.hiddeGameContainer();
+    this.showScoreboard();
+    console.log(`player1: ${this.playerOneCount} | player2: ${this.playerTwoCount}`)
   }
 }
 
@@ -178,7 +206,7 @@ let startButton = document.getElementById("start-button");
 
 startButton.addEventListener("click", () => {
   if (!gameIsRunning) {
-    const game = new Game();
+    const game = new Game(data);
     gameIsRunning = true;
   }
 });

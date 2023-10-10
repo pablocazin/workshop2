@@ -81,3 +81,7 @@ button#start-button {
 .no-button {
     background-color: red;
 }
+
+#end-container {
+    display: none;
+}
