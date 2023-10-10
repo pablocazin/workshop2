@@ -284,15 +284,14 @@ class Game {
       }
     }
 
-    
     // historical of answers
     this.historical.push({
-        player: button.substring(0, -3),
-        question: this.questions[this.step],
-        playerAnswer: button.includes("Yes"),
-        answer: this.actualQuestion.answer
-    })
-    
+      player: button.substring(0, -3),
+      question: this.questions[this.step],
+      playerAnswer: button.includes("Yes"),
+      answer: this.actualQuestion.answer,
+    });
+
     this.nextQuestion();
   }
 
@@ -304,10 +303,31 @@ class Game {
     console.log("end");
     this.hiddeGameContainer();
     this.showScoreboard();
+    this.createHtmlRenderForEndGame();
     gameIsRunning = false;
     console.log(
       `player1: ${this.playerOneCount} | player2: ${this.playerTwoCount}`
     );
+  }
+
+  createHtmlRenderForEndGame() {
+
+    // all html elements you will push into the dom
+    let htmlToReturn = [];
+
+    // for each historical element, change it with your HTML and class
+    for (let h of this.historical) {
+      htmlToReturn.push(
+        `
+            <div class="exemple">
+                player: ${h.player}, answer: ${h.answer}, playerAnswer: ${h.playerAnswer}, question: ${h.question}
+            </div>
+        `
+      );
+    }
+
+    // push all the html elements in the dom, change it with your ID
+    this.getElementById("exemple").innerHTML = htmlToReturn;
   }
 }
 
@@ -315,7 +335,6 @@ let gameIsRunning = false;
 
 let startButton1 = document.getElementById("start-button-1");
 let startButton2 = document.getElementById("start-button-2");
-
 
 startButton1.addEventListener("click", () => {
   if (!gameIsRunning) {
@@ -325,8 +344,8 @@ startButton1.addEventListener("click", () => {
 });
 
 startButton2.addEventListener("click", () => {
-    if (!gameIsRunning) {
-      const game = new Game(data[1]);
-      gameIsRunning = true;
-    }
-  });
+  if (!gameIsRunning) {
+    const game = new Game(data[1]);
+    gameIsRunning = true;
+  }
+});
