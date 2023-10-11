@@ -144,6 +144,10 @@ class Game {
     this.startContainer.style.display = "none";
   }
 
+  showStartContainer() {
+    this.startContainer.style.display = "flex";
+  }
+
   /**
    * show container of game
    */
@@ -162,6 +166,10 @@ class Game {
     this.endContainer.style.display = "flex";
   }
 
+  hiddeScoreboard() {
+    this.endContainer.style.display = "none";
+  }
+
   /**
    * Get the buttons we click on to answer
    */
@@ -174,8 +182,9 @@ class Game {
     this.startContainer = this.getElementById("start-container");
     this.gameContainer = this.getElementById("game-container");
     this.endContainer = this.getElementById("end-container");
-    this.playerOneCountPlaceholder = this.getElementById("player-one-count")
-    this.playerTwoCountPlaceholder = this.getElementById("player-two-count")
+    this.playerOneCountPlaceholder = this.getElementById("player-one-count");
+    this.playerTwoCountPlaceholder = this.getElementById("player-two-count");
+    this.backToMenuButton = this.getElementById("back-to-menu-button");
   }
 
   /**
@@ -203,6 +212,10 @@ class Game {
     });
     this.buttonTwoNo.addEventListener("click", () => {
       this.handleAnswer("buttonTwoNo");
+    });
+    this.backToMenuButton.addEventListener("click", () => {
+      this.hiddeGameContainer();
+      this.showStartContainer();
     });
   }
 
@@ -294,8 +307,8 @@ class Game {
       answer: this.actualQuestion.answer,
     });
 
-    this.playerOneCountPlaceholder.innerText = `joueur 1: ${this.playerOneCount}`
-    this.playerTwoCountPlaceholder.innerText = `joueur 2: ${this.playerTwoCount}`
+    this.playerOneCountPlaceholder.innerText = `joueur 1: ${this.playerOneCount}`;
+    this.playerTwoCountPlaceholder.innerText = `joueur 2: ${this.playerTwoCount}`;
 
     this.nextQuestion();
   }
@@ -316,7 +329,6 @@ class Game {
   }
 
   createHtmlRenderForEndGame() {
-
     // all html elements you will push into the dom
     let htmlToReturn = [];
 
@@ -332,7 +344,7 @@ class Game {
     }
 
     // push all the html elements in the dom, change it with your ID
-    this.getElementById("exemple").innerHTML = htmlToReturn;
+    //this.getElementById("exemple").innerHTML = htmlToReturn;
   }
 }
 
@@ -341,16 +353,22 @@ let gameIsRunning = false;
 let startButton1 = document.getElementById("start-button-1");
 let startButton2 = document.getElementById("start-button-2");
 
+let game1;
+let game2;
+
 startButton1.addEventListener("click", () => {
   if (!gameIsRunning) {
-    const game = new Game(data[0]);
+    game2 = {};
+    game1 = new Game(data[0]);
     gameIsRunning = true;
   }
 });
 
 startButton2.addEventListener("click", () => {
   if (!gameIsRunning) {
-    const game = new Game(data[1]);
+    game1 = {};
+    game2 = new Game(data[1]);
+
     gameIsRunning = true;
   }
 });
