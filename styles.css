@@ -46,6 +46,9 @@ div#game-container {
     height: 100%;
     display: none;
     flex-direction: column;
+    background-image: url("./assets/papier.jpg");
+    background-position: cover center;
+    background-repeat: no-repeat;
 }
 
 button#start-button {
@@ -71,6 +74,8 @@ button#start-button {
     justify-content: center;
     align-items: center;
     height: 30vh;
+    position: fixed;
+    top: 10vh;
 }
 
 #question-placeholder-second-wrapper {
@@ -80,13 +85,13 @@ button#start-button {
 
 #click-zone-container {
     display: flex;
+    margin-top: 40vh;
 }
 
 #click-zone-container div {
     height: 80vh;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .answer-button {
@@ -185,5 +190,11 @@ button#start-button {
   }
   
   /* Styles for questions */
+
+
+
+  #player-two-count, #player-one-count {
+    font-size: 40px;
+  }
 
   

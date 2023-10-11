@@ -31,7 +31,7 @@ function start(game_number) {
 }
 
 function setQuestions(game_number) {
-    gameData.questions = questions[game_number];
+  gameData.questions = questions[game_number];
 }
 
 function reset() {
@@ -74,28 +74,25 @@ function hiddeGameContainer() {
 }
 
 function listenToAnswerButtonsEvents() {
-
-  if(!isListeningToEvents) {
-      if(!gameData.isListeningToEvents) {
-          gameData.buttonOneYes.addEventListener("click", () => {
-            handleAnswer("buttonOneYes");
-          });
-          gameData.buttonOneNo.addEventListener("click", () => {
-            handleAnswer("buttonOneNo");
-          });
-          gameData.buttonTwoYes.addEventListener("click", () => {
-            handleAnswer("buttonTwoYes");
-          });
-          gameData.buttonTwoNo.addEventListener("click", () => {
-            handleAnswer("buttonTwoNo");
-          });
-          gameData.backToMenuButton.addEventListener("click", () => {
-            hiddeGameContainer();
-            showStartContainer();
-          });
-      }
-      isListeningToEvents = true;
+  if (!isListeningToEvents) {
+    gameData.buttonOneYes.addEventListener("click", () => {
+      handleAnswer("buttonOneYes");
+    });
+    gameData.buttonOneNo.addEventListener("click", () => {
+      handleAnswer("buttonOneNo");
+    });
+    gameData.buttonTwoYes.addEventListener("click", () => {
+      handleAnswer("buttonTwoYes");
+    });
+    gameData.buttonTwoNo.addEventListener("click", () => {
+      handleAnswer("buttonTwoNo");
+    });
+    gameData.backToMenuButton.addEventListener("click", () => {
+      hiddeGameContainer();
+      showStartContainer();
+    });
   }
+  isListeningToEvents = true;
 }
 
 function getElementById(id) {
@@ -130,19 +127,19 @@ function handleAnswer(button) {
     switch (button) {
       case "buttonOneYes":
         gameData.playerOneCount++;
-        hiddeEveryAnswerButtonsExcept("button-one-yes")
+        hiddeEveryAnswerButtonsExcept("button-one-yes");
         break;
       case "buttonOneNo":
         gameData.playerTwoCount++;
-        hiddeEveryAnswerButtonsExcept("button-one-no")
+        hiddeEveryAnswerButtonsExcept("button-one-no");
         break;
       case "buttonTwoYes":
         gameData.playerTwoCount++;
-        hiddeEveryAnswerButtonsExcept("button-two-yes")
+        hiddeEveryAnswerButtonsExcept("button-two-yes");
         break;
       case "buttonTwoNo":
         gameData.playerOneCount++;
-        hiddeEveryAnswerButtonsExcept("button-two-no")
+        hiddeEveryAnswerButtonsExcept("button-two-no");
         break;
       default:
         throw "No case match the button clicked";
@@ -153,19 +150,19 @@ function handleAnswer(button) {
     switch (button) {
       case "buttonOneYes":
         gameData.playerTwoCount++;
-        hiddeEveryAnswerButtonsExcept("button-one-yes")
+        hiddeEveryAnswerButtonsExcept("button-one-yes");
         break;
       case "buttonOneNo":
         gameData.playerOneCount++;
-        hiddeEveryAnswerButtonsExcept("button-one-no")
+        hiddeEveryAnswerButtonsExcept("button-one-no");
         break;
       case "buttonTwoYes":
         gameData.playerOneCount++;
-        hiddeEveryAnswerButtonsExcept("button-two-yes")
+        hiddeEveryAnswerButtonsExcept("button-two-yes");
         break;
       case "buttonTwoNo":
         gameData.playerTwoCount++;
-        hiddeEveryAnswerButtonsExcept("button-two-no")
+        hiddeEveryAnswerButtonsExcept("button-two-no");
         break;
       default:
         throw "No case match the button clicked";
@@ -180,8 +177,8 @@ function handleAnswer(button) {
     answer: gameData.actualQuestion.answer,
   });
 
-  gameData.playerOneCountPlaceholder.innerText = `joueur 1: ${gameData.playerOneCount}`;
-  gameData.playerTwoCountPlaceholder.innerText = `joueur 2: ${gameData.playerTwoCount}`;
+  gameData.playerOneCountPlaceholder.innerText = gameData.playerOneCount;
+  gameData.playerTwoCountPlaceholder.innerText = gameData.playerTwoCount;
 
   nextQuestion();
 }
@@ -210,41 +207,51 @@ function createHtmlRenderForEndGame() {
 }
 
 function hiddeEveryAnswerButtonsExcept(buttonToKeep) {
+  const buttons = [
+    "button-one-no",
+    "button-one-yes",
+    "button-two-no",
+    "button-two-yes",
+  ];
 
-  const buttons = ["button-one-no", "button-one-yes", "button-two-no", "button-two-yes"]
-
-  for(const btn of buttons) {
-    if(btn !== buttonToKeep) getElementById(btn).style.display = "none";
+  for (const btn of buttons) {
+    if (btn !== buttonToKeep) getElementById(btn).style.display = "none";
   }
 
-  setTimeout(HiddeEveryButtonsForNewQuestion, 1000)
+  setTimeout(HiddeEveryButtonsForNewQuestion, 1000);
 }
 
 function HiddeEveryButtonsForNewQuestion() {
+  const buttons = [
+    "button-one-no",
+    "button-one-yes",
+    "button-two-no",
+    "button-two-yes",
+  ];
 
-  const buttons = ["button-one-no", "button-one-yes", "button-two-no", "button-two-yes"]
-
-  for(const btn of buttons) {
+  for (const btn of buttons) {
     getElementById(btn).style.display = "none";
   }
 
   setTimeout(() => {
-    for(const btn of buttons) {
+    for (const btn of buttons) {
       getElementById(btn).style.display = "inline";
     }
-  }, 3000)
+  }, 3000);
 }
 
 function showEveryAnswerButtons() {
+  const buttons = [
+    "button-one-no",
+    "button-one-yes",
+    "button-two-no",
+    "button-two-yes",
+  ];
 
-  const buttons = ["button-one-no", "button-one-yes", "button-two-no", "button-two-yes"]
-
-  for(const btn of buttons) {
+  for (const btn of buttons) {
     getElementById(btn).style.display = "inline";
   }
 }
-
-
 
 document.getElementById("start-button-1").addEventListener("click", () => {
   start(0);
@@ -253,7 +260,6 @@ document.getElementById("start-button-1").addEventListener("click", () => {
 document.getElementById("start-button-2").addEventListener("click", () => {
   start(1);
 });
-
 
 // data
 const questions = [
