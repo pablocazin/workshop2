@@ -15,31 +15,41 @@
 
     <div id="game-container">
       <div id="question-placeholder-wrapper">
-        <p id="question-placeholder">Quizz sur le harcèlement en entreprise</p>
+        <div id="question-placeholder-second-wrapper">
+          <p id="question-placeholder">
+            Quizz sur le harcèlement en entreprise
+          </p>
+        </div>
       </div>
       <div id="click-zone-container">
-        <div id="left-game-container">
-          <button id="button-one-no" class="answer-button no-button">
-            <img src="./assets/cross.png" width="100%"/>
-          </button>
-          <button id="button-one-yes" class="answer-button yes-button">
-            <img src="./assets/check.png" width="100%"/>
-          </button>
+        <div id="left-game-container" class="flex-column">
+          <p id="player-one-count">joueur 1</p>
+
+          <div class="flex" style="height: auto;">
+            <button id="button-one-no" class="answer-button no-button">
+              <img src="./assets/cross.png" width="100%" />
+            </button>
+            <button id="button-one-yes" class="answer-button yes-button">
+              <img src="./assets/check.png" width="100%" />
+            </button>
+          </div>
         </div>
-        <div id="right-game-container">
-          <button id="button-two-no" class="answer-button no-button">
-            <img src="./assets/cross.png" width="100%"/>
-          </button>
-          <button id="button-two-yes" class="answer-button yes-button">
-            <img src="./assets/check.png" width="100%"/>
-          </button>
+        <div id="right-game-container" class="flex-column">
+          <p id="player-two-count">joueur 2</p>
+
+          <div class="flex" style="height: auto;">
+            <button id="button-two-no" class="answer-button no-button">
+              <img src="./assets/cross.png" width="100%" />
+            </button>
+            <button id="button-two-yes" class="answer-button yes-button">
+              <img src="./assets/check.png" width="100%" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id="end-container">
-      end
-    </div>
+    <div id="end-container">end</div>
 
     <script src="main.js"></script>
   </body>

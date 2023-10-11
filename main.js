@@ -109,8 +109,8 @@ class Game {
   // on part de 10 pour pouvoir décrementer le compteur
   // si la personne se dépeche pour sélectionner une mauvaise réponse
   // elle sera pénalisée face a quelqu'un qui prends le temps de réfléchir
-  playerOneCount = 10;
-  playerTwoCount = 10;
+  playerOneCount = 0;
+  playerTwoCount = 0;
   step = 0;
 
   /**
@@ -174,6 +174,8 @@ class Game {
     this.startContainer = this.getElementById("start-container");
     this.gameContainer = this.getElementById("game-container");
     this.endContainer = this.getElementById("end-container");
+    this.playerOneCountPlaceholder = this.getElementById("player-one-count")
+    this.playerTwoCountPlaceholder = this.getElementById("player-two-count")
   }
 
   /**
@@ -252,13 +254,13 @@ class Game {
           this.playerOneCount++;
           break;
         case "buttonOneNo":
-          this.playerOneCount--;
+          this.playerTwoCount++;
           break;
         case "buttonTwoYes":
           this.playerTwoCount++;
           break;
         case "buttonTwoNo":
-          this.playerTwoCount--;
+          this.playerOneCount++;
           break;
         default:
           throw "No case match the button clicked";
@@ -268,13 +270,13 @@ class Game {
     else {
       switch (button) {
         case "buttonOneYes":
-          this.playerOneCount--;
+          this.playerTwoCount++;
           break;
         case "buttonOneNo":
           this.playerOneCount++;
           break;
         case "buttonTwoYes":
-          this.playerTwoCount--;
+          this.playerOneCount++;
           break;
         case "buttonTwoNo":
           this.playerTwoCount++;
@@ -291,6 +293,9 @@ class Game {
       playerAnswer: button.includes("Yes"),
       answer: this.actualQuestion.answer,
     });
+
+    this.playerOneCountPlaceholder.innerText = `joueur 1: ${this.playerOneCount}`
+    this.playerTwoCountPlaceholder.innerText = `joueur 2: ${this.playerTwoCount}`
 
     this.nextQuestion();
   }
