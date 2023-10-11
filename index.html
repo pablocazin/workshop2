@@ -59,11 +59,44 @@
       </div>
     </div>
 
-    <div id="end-container">
-      <p>results</p>
-      <button id="back-to-menu-button">
-        retour au menu
-      </button>
+   <div id="end-container" style="flex-direction: column;">
+      <div style="display: flex;
+      justify-content: space-between;
+      " >
+        <button class="replay-button">Refaire une partie</button>
+        
+        <button class="replay-button">Aller plus loin</button>
+    </div>
+    <div style="display: flex; margin-top: 100px;">
+        <div class="player">
+          <div class="question">
+            <p>Question 1: Louis a tapé sur les fesses de Lucie, est-ce un acte de drague ?</p>
+            <div class="answer correct">Oui</div>
+            <div class="explanation">La réponse est NON car avoir un comportement physique déplacé est un acte d’agression sexuelle.</div>
+          </div>
+        
+          <div class="question">
+            <p>Question 2: Théo complimente Sofia sur sa nouvelle coupe de cheveux, est-ce un acte de harcèlement sexuel ?</p>
+            <div class="answer incorrect">Non</div>
+            <div class="explanation">La réponse est OUI car complimenté de manière occasionnelle est un acte amical.</div>
+          </div>
+        </div>
+    
+        <div class="player" >
+          <div class="question">
+            <p>Question 1: Louis a tapé sur les fesses de Lucie, est-ce un acte de drague ?</p>
+            <div class="answer correct">Oui</div>
+            <div class="explanation">La réponse est NON car avoir un comportement physique déplacé est un acte d’agression sexuelle.</div>
+          </div>
+    
+          <div class="question">
+            <p>Question 2: Théo complimente Sofia sur sa nouvelle coupe de cheveux, est-ce un acte de harcèlement sexuel ?</p>
+            <div class="answer incorrect">Non</div>
+            <div class="explanation">La réponse est OUI car complimenté de manière occasionnelle est un acte amical.</div>
+          </div>
+        </div>
+      </div>
+      <div id="exemple"></div>
     </div>
 
     <script src="script.js"></script>
