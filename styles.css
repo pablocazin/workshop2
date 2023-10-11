@@ -197,4 +197,12 @@ button#start-button {
     font-size: 40px;
   }
 
+    /* Styles for questions */
+
+  .red-text {
+    color: red;
+  }
   
+  .green-text {
+    color: green;
+  }
