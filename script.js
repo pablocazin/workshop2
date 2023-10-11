@@ -22,20 +22,19 @@ let gameData = {
 isListeningToEvents = false;
 
 function start(game_number) {
-  console.log("start");
-  reset(game_number);
+  reset();
   setQuestions(game_number);
   hiddeStartContainer();
   showGameContainer();
   listenToAnswerButtonsEvents();
   nextQuestion();
 }
+
 function setQuestions(game_number) {
     gameData.questions = questions[game_number];
 }
 
-function reset(game_number) {
-  console.log("reset");
+function reset() {
   gameData = {
     step: 0,
     questions: [],
@@ -59,27 +58,22 @@ function reset(game_number) {
 }
 
 function hiddeStartContainer() {
-  console.log("hiddeStartContainer");
   gameData.startContainer.style.display = "none";
 }
 
 function showStartContainer() {
-  console.log("showStartContainer");
   gameData.startContainer.style.display = "flex";
 }
 
 function showGameContainer() {
-  console.log("showGameContainer");
   gameData.gameContainer.style.display = "flex";
 }
 
 function hiddeGameContainer() {
-  console.log("hiddeGameContainer");
   gameData.gameContainer.style.display = "none";
 }
 
 function listenToAnswerButtonsEvents() {
-  console.log("listenToAnswerButtonsEvents");
 
   if(!isListeningToEvents) {
       if(!gameData.isListeningToEvents) {
@@ -109,20 +103,14 @@ function getElementById(id) {
 }
 
 function showScoreboard() {
-  console.log("showScoreboard");
   gameData.endContainer.style.display = "flex";
 }
 
 function hiddeScoreboard() {
-  console.log("hiddeScoreboard");
   gameData.endContainer.style.display = "none";
 }
 
 function nextQuestion() {
-  console.log("nextQuestion");
-  console.log("LLALALALALALALA")
-
-console.log(gameData.step)
   if (gameData.questions[gameData.step]) {
     gameData.actualQuestion = gameData.questions[gameData.step];
     assignQuestionToPlaceholders(gameData.questions[gameData.step]);
@@ -133,12 +121,10 @@ console.log(gameData.step)
 }
 
 function assignQuestionToPlaceholders(question) {
-  console.log("assignQuestionToPlaceholders");
   gameData.textPlaceholder.innerText = question.text;
 }
 
 function handleAnswer(button) {
-  console.log("handleAnswer");
   // If the answer is yes
   if (gameData.actualQuestion.answer) {
     switch (button) {
@@ -201,7 +187,6 @@ function handleAnswer(button) {
 }
 
 function end() {
-  console.log("end");
   hiddeGameContainer();
   showScoreboard();
   createHtmlRenderForEndGame();
@@ -209,7 +194,6 @@ function end() {
 }
 
 function createHtmlRenderForEndGame() {
-  console.log("createHtmlRenderForEndGame");
   // all html elements you will push into the dom
   let htmlToReturn = [];
 
@@ -227,8 +211,6 @@ function createHtmlRenderForEndGame() {
 
 function hiddeEveryAnswerButtonsExcept(buttonToKeep) {
 
-  console.log("hiddeEveryAnswerButtonsExcept: " + buttonToKeep)
-
   const buttons = ["button-one-no", "button-one-yes", "button-two-no", "button-two-yes"]
 
   for(const btn of buttons) {
@@ -236,13 +218,9 @@ function hiddeEveryAnswerButtonsExcept(buttonToKeep) {
   }
 
   setTimeout(HiddeEveryButtonsForNewQuestion, 1000)
-
-
 }
 
 function HiddeEveryButtonsForNewQuestion() {
-
-  console.log("HiddeEveryButtonsForNewQuestion")
 
   const buttons = ["button-one-no", "button-one-yes", "button-two-no", "button-two-yes"]
 
@@ -255,12 +233,9 @@ function HiddeEveryButtonsForNewQuestion() {
       getElementById(btn).style.display = "inline";
     }
   }, 3000)
-
-
 }
 
 function showEveryAnswerButtons() {
-  console.log("showEveryAnswerButtons")
 
   const buttons = ["button-one-no", "button-one-yes", "button-two-no", "button-two-yes"]
 
@@ -278,7 +253,6 @@ document.getElementById("start-button-1").addEventListener("click", () => {
 document.getElementById("start-button-2").addEventListener("click", () => {
   start(1);
 });
-
 
 
 // data
