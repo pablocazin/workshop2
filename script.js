@@ -87,10 +87,10 @@ function listenToAnswerButtonsEvents() {
     gameData.buttonTwoNo.addEventListener("click", () => {
       handleAnswer("buttonTwoNo");
     });
-    gameData.backToMenuButton.addEventListener("click", () => {
-      hiddeGameContainer();
-      showStartContainer();
-    });
+    //gameData.backToMenuButton.addEventListener("click", () => {
+     // hiddeGameContainer();
+     // showStartContainer();
+    //});
   }
   isListeningToEvents = true;
 }
