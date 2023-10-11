@@ -191,18 +191,27 @@ function end() {
 }
 
 function createHtmlRenderForEndGame() {
-  // all html elements you will push into the dom
-  let htmlToReturn = [];
-
-  // for each historical element, change it with your HTML and class
+  // Get the DOM element where you want to display the data
+  let container = document.getElementById("exemple");
+  console.log(gameData.historical);
+  // Iterate through the historical data and create HTML for each entry
   for (let h of gameData.historical) {
-    htmlToReturn.push(
-      `
-            <div class="exemple">
-                player: ${h.player}, answer: ${h.answer}, playerAnswer: ${h.playerAnswer}, question: ${h.question}
-            </div>
-        `
-    );
+    // Determine the text and color based on playerAnswer and answer
+    let textColor = h.playerAnswer === h.answer ? "green-text" : "red-text";
+    let playerAnswerText = h.playerAnswer ? "OUI" : "NON";
+
+    // Create HTML for the entry
+    let htmlEntry = `
+      
+      <div class="question">
+        <p>${h.question.text}</p>
+        <span class="${textColor}">${playerAnswerText}</span>
+        <div class="explanation">${h.question.why}</div>
+      </div>
+    `;
+
+    // Append the HTML entry to the container
+    container.innerHTML += htmlEntry;
   }
 }
 
