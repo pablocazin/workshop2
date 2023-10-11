@@ -122,24 +122,27 @@ function assignQuestionToPlaceholders(question) {
 }
 
 function handleAnswer(button) {
+
+  HiddeEveryButtonsForNewQuestion()
+
   // If the answer is yes
   if (gameData.actualQuestion.answer) {
     switch (button) {
       case "buttonOneYes":
         gameData.playerOneCount++;
-        hiddeEveryAnswerButtonsExcept("button-one-yes");
+        showFakeAndOpacity("fake-button-one-yes", "fake-button-one-no");
         break;
       case "buttonOneNo":
         gameData.playerTwoCount++;
-        hiddeEveryAnswerButtonsExcept("button-one-no");
+        showFakeAndOpacity("fake-button-one-no", "fake-button-one-yes");
         break;
       case "buttonTwoYes":
         gameData.playerTwoCount++;
-        hiddeEveryAnswerButtonsExcept("button-two-yes");
+        showFakeAndOpacity("fake-button-two-yes", "fake-button-two-no");
         break;
       case "buttonTwoNo":
         gameData.playerOneCount++;
-        hiddeEveryAnswerButtonsExcept("button-two-no");
+        showFakeAndOpacity("fake-button-two-no", "fake-button-two-yes");
         break;
       default:
         throw "No case match the button clicked";
@@ -150,19 +153,19 @@ function handleAnswer(button) {
     switch (button) {
       case "buttonOneYes":
         gameData.playerTwoCount++;
-        hiddeEveryAnswerButtonsExcept("button-one-yes");
+        showFakeAndOpacity("fake-button-one-yes", "fake-button-one-no");
         break;
       case "buttonOneNo":
         gameData.playerOneCount++;
-        hiddeEveryAnswerButtonsExcept("button-one-no");
+        showFakeAndOpacity("fake-button-one-no", "fake-button-one-yes");
         break;
       case "buttonTwoYes":
         gameData.playerOneCount++;
-        hiddeEveryAnswerButtonsExcept("button-two-yes");
+        showFakeAndOpacity("fake-button-two-yes", "fake-button-two-no");
         break;
       case "buttonTwoNo":
         gameData.playerTwoCount++;
-        hiddeEveryAnswerButtonsExcept("button-two-no");
+        showFakeAndOpacity("fake-button-two-no", "fake-button-two-yes");
         break;
       default:
         throw "No case match the button clicked";
@@ -206,19 +209,16 @@ function createHtmlRenderForEndGame() {
   }
 }
 
-function hiddeEveryAnswerButtonsExcept(buttonToKeep) {
-  const buttons = [
-    "button-one-no",
-    "button-one-yes",
-    "button-two-no",
-    "button-two-yes",
-  ];
+function showFakeAndOpacity(buttonToFake, buttonToHidde) {
+  getElementById(buttonToFake).style.display = "inline";
+  getElementById(buttonToHidde).style.display = "inline";
+  getElementById(buttonToHidde).style.opacity = "0";
 
-  for (const btn of buttons) {
-    if (btn !== buttonToKeep) getElementById(btn).style.display = "none";
-  }
-
-  setTimeout(HiddeEveryButtonsForNewQuestion, 1000);
+  setTimeout(() => {
+    getElementById(buttonToFake).style.display = "none";
+    getElementById(buttonToHidde).style.display = "none";
+    getElementById(buttonToHidde).style.opacity = "1";
+  }, 3000)
 }
 
 function HiddeEveryButtonsForNewQuestion() {
