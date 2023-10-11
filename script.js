@@ -144,15 +144,19 @@ function handleAnswer(button) {
     switch (button) {
       case "buttonOneYes":
         gameData.playerOneCount++;
+        hiddeEveryAnswerButtonsExcept("button-one-yes")
         break;
       case "buttonOneNo":
-        thgameDatais.playerTwoCount++;
+        gameData.playerTwoCount++;
+        hiddeEveryAnswerButtonsExcept("button-one-no")
         break;
       case "buttonTwoYes":
         gameData.playerTwoCount++;
+        hiddeEveryAnswerButtonsExcept("button-two-yes")
         break;
       case "buttonTwoNo":
         gameData.playerOneCount++;
+        hiddeEveryAnswerButtonsExcept("button-two-no")
         break;
       default:
         throw "No case match the button clicked";
@@ -163,15 +167,19 @@ function handleAnswer(button) {
     switch (button) {
       case "buttonOneYes":
         gameData.playerTwoCount++;
+        hiddeEveryAnswerButtonsExcept("button-one-yes")
         break;
       case "buttonOneNo":
         gameData.playerOneCount++;
+        hiddeEveryAnswerButtonsExcept("button-one-no")
         break;
       case "buttonTwoYes":
         gameData.playerOneCount++;
+        hiddeEveryAnswerButtonsExcept("button-two-yes")
         break;
       case "buttonTwoNo":
         gameData.playerTwoCount++;
+        hiddeEveryAnswerButtonsExcept("button-two-no")
         break;
       default:
         throw "No case match the button clicked";
@@ -217,6 +225,52 @@ function createHtmlRenderForEndGame() {
   }
 }
 
+function hiddeEveryAnswerButtonsExcept(buttonToKeep) {
+
+  console.log("hiddeEveryAnswerButtonsExcept: " + buttonToKeep)
+
+  const buttons = ["button-one-no", "button-one-yes", "button-two-no", "button-two-yes"]
+
+  for(const btn of buttons) {
+    if(btn !== buttonToKeep) getElementById(btn).style.display = "none";
+  }
+
+  setTimeout(HiddeEveryButtonsForNewQuestion, 1000)
+
+
+}
+
+function HiddeEveryButtonsForNewQuestion() {
+
+  console.log("HiddeEveryButtonsForNewQuestion")
+
+  const buttons = ["button-one-no", "button-one-yes", "button-two-no", "button-two-yes"]
+
+  for(const btn of buttons) {
+    getElementById(btn).style.display = "none";
+  }
+
+  setTimeout(() => {
+    for(const btn of buttons) {
+      getElementById(btn).style.display = "inline";
+    }
+  }, 3000)
+
+
+}
+
+function showEveryAnswerButtons() {
+  console.log("showEveryAnswerButtons")
+
+  const buttons = ["button-one-no", "button-one-yes", "button-two-no", "button-two-yes"]
+
+  for(const btn of buttons) {
+    getElementById(btn).style.display = "inline";
+  }
+}
+
+
+
 document.getElementById("start-button-1").addEventListener("click", () => {
   start(0);
 });
@@ -224,8 +278,6 @@ document.getElementById("start-button-1").addEventListener("click", () => {
 document.getElementById("start-button-2").addEventListener("click", () => {
   start(1);
 });
-
-
 
 
 
