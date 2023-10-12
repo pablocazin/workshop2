@@ -269,6 +269,9 @@ function createHtmlRenderForEndGame() {
     containerSec.innerHTML += htmlEntrySec;
     }
 }
+  
+document.getElementById('playerOneCount').textContent = gameData.playerOneCount;
+document.getElementById('playerTwoCount').textContent = gameData.playerTwoCount;
 }
 
 function showFakeAndOpacity(buttonToFake, buttonToHidde) {
