@@ -130,18 +130,22 @@ function handleAnswer(button) {
       case "buttonOneYes":
         gameData.playerOneCount++;
         showFakeAndOpacity("fake-button-one-yes", "fake-button-one-no");
+        turnCountGreenForPlayerOne();
         break;
       case "buttonOneNo":
         gameData.playerTwoCount++;
         showFakeAndOpacity("fake-button-one-no", "fake-button-one-yes");
+        turnCountGreenForPlayerTwo();
         break;
       case "buttonTwoYes":
         gameData.playerTwoCount++;
         showFakeAndOpacity("fake-button-two-yes", "fake-button-two-no");
+        turnCountGreenForPlayerTwo();
         break;
       case "buttonTwoNo":
         gameData.playerOneCount++;
         showFakeAndOpacity("fake-button-two-no", "fake-button-two-yes");
+        turnCountGreenForPlayerOne();
         break;
       default:
         throw "No case match the button clicked";
@@ -153,18 +157,22 @@ function handleAnswer(button) {
       case "buttonOneYes":
         gameData.playerTwoCount++;
         showFakeAndOpacity("fake-button-one-yes", "fake-button-one-no");
+        turnCountGreenForPlayerTwo();
         break;
       case "buttonOneNo":
         gameData.playerOneCount++;
         showFakeAndOpacity("fake-button-one-no", "fake-button-one-yes");
+        turnCountGreenForPlayerOne();
         break;
       case "buttonTwoYes":
         gameData.playerOneCount++;
         showFakeAndOpacity("fake-button-two-yes", "fake-button-two-no");
+        turnCountGreenForPlayerOne();
         break;
       case "buttonTwoNo":
         gameData.playerTwoCount++;
         showFakeAndOpacity("fake-button-two-no", "fake-button-two-yes");
+        turnCountGreenForPlayerTwo();
         break;
       default:
         throw "No case match the button clicked";
@@ -182,6 +190,26 @@ function handleAnswer(button) {
   updateCount();
 
   nextQuestion();
+}
+
+function turnCountGreenForPlayerOne() {
+  getElementById("player-one-count-wrapper").style.backgroundColor = "rgb(39, 231, 39)";
+  getElementById("player-one-count-wrapper").style.color = "white"
+
+  setTimeout(() => {
+    getElementById("player-one-count-wrapper").style.backgroundColor = "white";
+    getElementById("player-one-count-wrapper").style.color = "black";
+  }, 3000)
+}
+
+function turnCountGreenForPlayerTwo() {
+  getElementById("player-two-count-wrapper").style.backgroundColor = "rgb(39, 231, 39)";
+  getElementById("player-two-count-wrapper").style.color = "white";
+
+  setTimeout(() => {
+    getElementById("player-two-count-wrapper").style.backgroundColor = "white";
+    getElementById("player-two-count-wrapper").style.color = "black";
+  }, 3000)
 }
 
 function end() {
