@@ -174,7 +174,7 @@ function handleAnswer(button) {
 
   // historical of answers
   gameData.historical.push({
-    player: button.substring(0, -3),
+    player: button.substr(6,3),
     question: gameData.questions[gameData.step],
     playerAnswer: button.includes("Yes"),
     answer: gameData.actualQuestion.answer,
@@ -194,11 +194,14 @@ function end() {
 }
 
 function createHtmlRenderForEndGame() {
-  // Get the DOM element where you want to display the data
+ // Get the DOM element where you want to display the data
   let container = document.getElementById("exemple");
+  
+  let containerSec = document.getElementById("exemplesec");
   console.log(gameData.historical);
   // Iterate through the historical data and create HTML for each entry
   for (let h of gameData.historical) {
+    if(h.player==="One"){
     // Determine the text and color based on playerAnswer and answer
     let textColor = h.playerAnswer === h.answer ? "green-text" : "red-text";
     let playerAnswerText = h.playerAnswer ? "OUI" : "NON";
@@ -216,6 +219,25 @@ function createHtmlRenderForEndGame() {
     // Append the HTML entry to the container
     container.innerHTML += htmlEntry;
   }
+  if(h.player==="Two"){
+    // Determine the text and color based on playerAnswer and answer
+    let textColor = h.playerAnswer === h.answer ? "green-text" : "red-text";
+    let playerAnswerText = h.playerAnswer ? "OUI" : "NON";
+
+    // Create HTML for the entry
+    let htmlEntrySec = `
+      
+      <div class="question">
+        <p>${h.question.text}</p>
+        <span class="${textColor}">${playerAnswerText}</span>
+        <div class="explanation">${h.question.why}</div>
+      </div>
+    `;
+
+    // Append the HTML entry to the container
+    containerSec.innerHTML += htmlEntrySec;
+    }
+}
 }
 
 function showFakeAndOpacity(buttonToFake, buttonToHidde) {
