@@ -174,7 +174,7 @@ function handleAnswer(button) {
   // historical of answers
   gameData.historical.push({
     player: button.substr(6,3),
-    question: gameData.questions[gameData.step],
+    question: gameData.questions[gameData.step - 1],
     playerAnswer: button.includes("Yes"),
     answer: gameData.actualQuestion.answer,
   });

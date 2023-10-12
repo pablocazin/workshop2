@@ -9,17 +9,24 @@
   </head>
   <body>
     <div id="start-container">
-      <img src="./assets/LOGO.png" style="height: 340px;" alt="logo" />
-      <p style="font-family: cursive;font-size: 24px;
-      text-align: center;
-      font-weight: 900; color: white;">
-        ☆Ce jeu se joue à 2 joueurs avec 10 questions☆ <br>
-        ☆Lorsque les 2 joueurs sont prêts, choisir “SERIE 1” ou “SERIE 2”☆ <br>
+      <img src="./assets/LOGO.png" style="height: 340px" alt="logo" />
+      <p
+        style="
+          font-family: cursive;
+          font-size: 24px;
+          text-align: center;
+          font-weight: 900;
+          color: white;
+        "
+      >
+        ☆Ce jeu se joue à 2 joueurs avec 10 questions☆ <br />
+        ☆Lorsque les 2 joueurs sont prêts, choisir “SERIE 1” ou “SERIE 2”☆
+        <br />
         ☆Le vainqueur est celui avec le plus de points☆
-        </p>
+      </p>
       <div id="start-buttons-container">
-        <button id="start-button-1" style="color: white;">SERIE 1</button>
-        <button id="start-button-2" style="color: white;">SERIE 2</button>
+        <button id="start-button-1" style="color: white">SERIE 1</button>
+        <button id="start-button-2" style="color: white">SERIE 2</button>
       </div>
     </div>
 
@@ -31,7 +38,9 @@
       </div>
       <div id="click-zone-container">
         <div id="left-game-container" class="flex-column">
-          <p id="player-one-count">0</p>
+          <div id="player-one-count-wrapper">
+            <p id="player-one-count">0</p>
+          </div>
 
           <div class="flex" style="height: auto">
             <button id="button-one-no" class="answer-button no-button">
@@ -41,18 +50,26 @@
               <img src="./assets/check.png" width="100%" />
             </button>
 
-            <button id="fake-button-one-no" class="answer-button no-button fake">
+            <button
+              id="fake-button-one-no"
+              class="answer-button no-button fake"
+            >
               <img src="./assets/cross.png" width="100%" />
             </button>
-            <button id="fake-button-one-yes" class="answer-button yes-button fake">
+            <button
+              id="fake-button-one-yes"
+              class="answer-button yes-button fake"
+            >
               <img src="./assets/check.png" width="100%" />
             </button>
           </div>
         </div>
         <div id="right-game-container" class="flex-column">
-          <p id="player-two-count">0</p>
+          <div id="player-two-count-wrapper">
+            <p id="player-two-count">0</p>
+          </div>
 
-          <div class="flex" style="height: auto"> 
+          <div class="flex" style="height: auto">
             <button id="button-two-no" class="answer-button no-button">
               <img src="./assets/cross.png" width="100%" />
             </button>
@@ -60,10 +77,16 @@
               <img src="./assets/check.png" width="100%" />
             </button>
 
-            <button id="fake-button-two-no" class="answer-button no-button fake">
+            <button
+              id="fake-button-two-no"
+              class="answer-button no-button fake"
+            >
               <img src="./assets/cross.png" width="100%" />
             </button>
-            <button id="fake-button-two-yes" class="answer-button yes-button fake">
+            <button
+              id="fake-button-two-yes"
+              class="answer-button yes-button fake"
+            >
               <img src="./assets/check.png" width="100%" />
             </button>
           </div>
@@ -71,26 +94,29 @@
       </div>
     </div>
 
-   <div id="end-container" style="flex-direction: column;">
-    <div style="display: flex;
-      justify-content: space-between;
-      ">
+    <div id="end-container" style="flex-direction: column">
+      <div style="display: flex; justify-content: space-between">
+        <button id="back-to-menu-button" class="replay-button">
+          Refaire une partie
+        </button>
 
-      <button id="back-to-menu-button" class="replay-button">Refaire une partie</button>
-
-      <button class="replay-button" onclick="location.href='https://www.droit-travail-france.fr/harcelement-travail.php'">Aller plus loin</button>
-    </div>
-    <div style="display: flex; margin-top: 100px;">
-      <div class="player">
-        <div id="exemple"></div>
-
+        <button
+          class="replay-button"
+          onclick="location.href='https://www.droit-travail-france.fr/harcelement-travail.php'"
+        >
+          Aller plus loin
+        </button>
       </div>
+      <div style="display: flex; margin-top: 100px">
+        <div class="player">
+          <div id="exemple"></div>
+        </div>
 
-      <div class="player">
-        <div id="exemplesec"></div>
+        <div class="player">
+          <div id="exemplesec"></div>
+        </div>
       </div>
     </div>
-  </div>
 
     <script src="script.js"></script>
   </body>

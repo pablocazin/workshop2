@@ -210,3 +210,13 @@ button#start-button {
 .green-text {
   color: green;
 }
+
+#player-one-count-wrapper, #player-two-count-wrapper {
+  width: 100px;
+  height: 100px !important;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
