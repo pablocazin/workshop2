@@ -87,10 +87,9 @@ function listenToAnswerButtonsEvents() {
     gameData.buttonTwoNo.addEventListener("click", () => {
       handleAnswer("buttonTwoNo");
     });
-    //gameData.backToMenuButton.addEventListener("click", () => {
-     // hiddeGameContainer();
-     // showStartContainer();
-    //});
+    gameData.backToMenuButton.addEventListener("click", () => {
+     backToMenu();
+    });
   }
   isListeningToEvents = true;
 }
@@ -180,8 +179,7 @@ function handleAnswer(button) {
     answer: gameData.actualQuestion.answer,
   });
 
-  gameData.playerOneCountPlaceholder.innerText = gameData.playerOneCount;
-  gameData.playerTwoCountPlaceholder.innerText = gameData.playerTwoCount;
+  updateCount();
 
   nextQuestion();
 }
@@ -191,6 +189,11 @@ function end() {
   showScoreboard();
   createHtmlRenderForEndGame();
   gameData.gameIsRunning = false;
+}
+
+function updateCount() {
+  gameData.playerOneCountPlaceholder.innerText = gameData.playerOneCount;
+  gameData.playerTwoCountPlaceholder.innerText = gameData.playerTwoCount;
 }
 
 function createHtmlRenderForEndGame() {
@@ -282,6 +285,17 @@ function showEveryAnswerButtons() {
   for (const btn of buttons) {
     getElementById(btn).style.display = "inline";
   }
+}
+
+function backToMenu() {
+  hiddeEndContainer();
+  showStartContainer();
+  reset()
+  updateCount();
+}
+
+function hiddeEndContainer() {
+  gameData.endContainer.style.display = "none";
 }
 
 document.getElementById("start-button-1").addEventListener("click", () => {
